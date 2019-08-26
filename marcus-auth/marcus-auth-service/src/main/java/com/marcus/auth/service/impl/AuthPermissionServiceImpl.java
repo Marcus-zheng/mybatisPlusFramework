@@ -92,24 +92,48 @@ public class AuthPermissionServiceImpl implements AuthPermissionService {
             List<AuthPermissionVo> systemMenus = getSystemMenus(userId);
             if (!CollectionUtils.isEmpty(systemMenus)){
                 for (AuthPermissionVo systemMenu : systemMenus) {
-                    allMenus.add(systemMenu);
-                    // 根据一级菜单获取二级菜单
-                    List<AuthPermissionVo> parentMenus = getAuthPermissionByParentId(userId,
-                            AuthContants.RESOURCE_TYPE_MENU, systemMenu.getId());
-                    if (!CollectionUtils.isEmpty(parentMenus)){
-                        // 根据二级菜单获取三级菜单
-                        for (AuthPermissionVo parentMenu : parentMenus) {
-                            allMenus.add(parentMenu);
-                            List<AuthPermissionVo> menus = getAuthPermissionByParentId(userId,
-                                    AuthContants.RESOURCE_TYPE_MENU, parentMenu.getId());
-                            if (!CollectionUtils.isEmpty(menus)){
-                                allMenus.addAll(menus);
-                            }
-                        }
-                    }
+                    getChildrenMenu(userId, systemMenu);
+//                    allMenus.add(systemMenu);
+//                    // 根据一级菜单获取二级菜单
+//                    List<AuthPermissionVo> parentMenus = getAuthPermissionByParentId(userId,
+//                            AuthContants.RESOURCE_TYPE_MENU, systemMenu.getId());
+//                    if (!CollectionUtils.isEmpty(parentMenus)){
+//                        // 根据二级菜单获取三级菜单
+//                        for (AuthPermissionVo parentMenu : parentMenus) {
+//                            allMenus.add(parentMenu);
+//                            List<AuthPermissionVo> menus = getAuthPermissionByParentId(userId,
+//                                    AuthContants.RESOURCE_TYPE_MENU, parentMenu.getId());
+//                            if (!CollectionUtils.isEmpty(menus)){
+//                                allMenus.addAll(menus);
+//                            }
+//                        }
+//                    }
                 }
             }
         }
         return allMenus;
+    }
+
+    /**
+     * @Description 递归获取下级菜单
+     * @Author Marcus.zheng
+     * @Date 2019/8/26 18:00
+     * @Param parentMenu
+     * @Return java.util.List<com.marcus.auth.entity.AuthPermission>
+     */
+    private List<AuthPermissionVo> getChildrenMenu(Long userId, AuthPermissionVo parentMenu){
+        List<AuthPermissionVo> authPermissionVoList = new ArrayList<>();
+        if (Objects.nonNull(parentMenu)){
+            authPermissionVoList.add(parentMenu);
+            List<AuthPermissionVo> childrenMenus = getAuthPermissionByParentId(userId,
+                    AuthContants.RESOURCE_TYPE_MENU, parentMenu.getId());
+            if (!CollectionUtils.isEmpty(childrenMenus)){
+                for (AuthPermissionVo childrenMenu : childrenMenus) {
+                    // 递归调用
+                    authPermissionVoList.addAll(getChildrenMenu(userId, childrenMenu));
+                }
+            }
+        }
+        return authPermissionVoList;
     }
 }

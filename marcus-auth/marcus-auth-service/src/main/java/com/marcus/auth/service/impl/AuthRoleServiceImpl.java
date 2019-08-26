@@ -113,8 +113,7 @@ public class AuthRoleServiceImpl implements AuthRoleService {
     public PageBean list(AuthRoleVo vo, PageBean pageBean) {
         QueryWrapper<AuthRole> condition = new QueryWrapper<>();
         condition.like(StringUtils.isNotBlank(vo.getCode()),"code", vo.getCode())
-                .like(StringUtils.isNotBlank(vo.getName()),"name", vo.getName())
-                .eq("delStatus", 0);
+                .like(StringUtils.isNotBlank(vo.getName()),"name", vo.getName());
         Page<AuthRole> authRolePage = new Page<>(pageBean.getOffset(), pageBean.getLimit());
         IPage<AuthRole> authRoleIPage = authRoleMapper.selectPage(authRolePage, condition);
         pageBean.setTotal(authRoleIPage.getTotal());
