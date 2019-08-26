@@ -92,7 +92,7 @@ public class AuthPermissionServiceImpl implements AuthPermissionService {
             List<AuthPermissionVo> systemMenus = getSystemMenus(userId);
             if (!CollectionUtils.isEmpty(systemMenus)){
                 for (AuthPermissionVo systemMenu : systemMenus) {
-                    getChildrenMenu(userId, systemMenu);
+                    allMenus.addAll(getChildrenMenu(userId, systemMenu));
 //                    allMenus.add(systemMenu);
 //                    // 根据一级菜单获取二级菜单
 //                    List<AuthPermissionVo> parentMenus = getAuthPermissionByParentId(userId,
