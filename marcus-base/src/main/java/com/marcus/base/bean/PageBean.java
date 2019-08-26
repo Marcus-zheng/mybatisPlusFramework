@@ -17,9 +17,11 @@ public class PageBean implements Serializable {
     private static final long serialVersionUID = -7953892880033122091L;
 
     // 第几页，从0开始算
-    private int page = 0;
+//    private int page = 0;
+    private int offset = 0;
     // 每页几条
-    private int size = 10;
+//    private int size = 10;
+    private int limit = 10;
     // 总条数
     private long total = 0;
     // 数据

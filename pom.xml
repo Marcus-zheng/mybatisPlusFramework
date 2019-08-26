@@ -18,5 +18,8 @@
         <module>marcus-redis</module>
         <module>marcus-security</module>
         <module>marcus-startup</module>
+        <module>marcus-entity</module>
+        <module>marcus-auth</module>
+        <module>marcus-system</module>
     </modules>
 </project>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>自拍照编辑</title>
+
+    <link href="/static/plugins/bootstrap/validator/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/animate.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/style.css?v=4.1.0" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/fileinput/fileinput.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/fileinput/themes/explorer-fas/theme.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="page-header">自拍照编辑</h2>
+
+    <div class="row">
+        <div class="form-horizontal" id="configData">
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm">自拍照片:</label>
+                    <div class="col-lg-3">
+                        <div class="file-loading">
+                            <input id="mainPicFile" type="file" name="multiFile" multiple>
+                        </div>
+                    </div>
+                    <input id="selfShotPhoto" type="text" name="selfShotPhoto" style="opacity: 0;width: 0;height: 0;" class="query-cond">
+                </div>
+
+                <div class="form-group" style="padding-top:10px;padding-left: 80px;width: auto;">
+                    <button id="updatePhoto" class="btn btn-sm btn-primary" type="submit">保存</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<script src="/static/plugins/layer/layer.js"></script>
+<script src="/static/common/param.js"></script>
+<script src="/static/plugins/bootstrap/frame/bootstrap.min.js"></script>
+<script src="/static/plugins/bootstrap/validator/bootstrapValidator.min.js"></script>
+<script src="/static/plugins/bootstrap/fileinput/fileinput.min.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/locales/zh.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/plugins/piexif.min.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/plugins/sortable.min.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/themes/fa/theme.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/themes/explorer-fa/theme.js" type="text/javascript"></script>
+<script src="/static/common/session.js"></script>
+<script src="/static/mm/mmPhoto.js"></script>
+</body>
+</html>

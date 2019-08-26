@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>邮箱参数设置</title>
+
+    <link href="/static/plugins/bootstrap/validator/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/animate.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/style.css?v=4.1.0" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="page-header">邮箱参数设置</h2>
+
+    <div class="row">
+        <div class="form-horizontal" id="configData">
+            <form>
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm" style="width: 150px"  for="serverHost">邮箱服务器地址:</label>
+                    <div class="col-lg-2">
+                        <input id="serverHost" name="system.mailServerHost" th:value="${mailParams['system.mailServerHost']}" type="text" class="form-control query-cond edit-cond"/>&nbsp;&nbsp;<span style="font-family: 'Times New Roman', Times, serif">(smtp.xxx.xxx)</span>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm" style="width: 150px"  for="serverPort">邮件服务器端口:</label>
+                    <div class="col-lg-2">
+                        <input id="serverPort" name="system.mailServerPort" th:value="${mailParams['system.mailServerPort']}" type="text" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm" style="width: 150px"  for="userName">邮箱用户名:</label>
+                    <div class="col-lg-2">
+                        <input id="userName" name="system.mailUserName" th:value="${mailParams['system.mailUserName']}" type="text" class="form-control query-cond edit-cond"/>&nbsp;&nbsp;<span style="font-family: 'Times New Roman', Times, serif">(xxx@xxx.xxx)</span>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm" style="width: 150px"  for="password">邮箱密码:</label>
+                    <div class="col-lg-2">
+                        <input id="password" name="system.mailPassword" th:value="${mailParams['system.mailPassword']}" type="password" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px;padding-left: 80px;width: auto;">
+                    <button id="testSendButton" class="btn btn-sm btn-info" type="button">测试连接</button>&nbsp;<label id="testResultText"></label>
+                    &nbsp;&nbsp;&nbsp;<button id="createUser" class="btn btn-sm btn-primary" type="submit">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<script src="/static/plugins/layer/layer.js"></script>
+<script src="/static/common/param.js"></script>
+<script src="/static/plugins/secure/md5.js"></script>
+<script src="/static/plugins/bootstrap/frame/bootstrap.min.js"></script>
+<script src="/static/plugins/bootstrap/validator/bootstrapValidator.min.js"></script>
+<script src="/static/common/session.js"></script>
+<script src="/static/mail/mailManage.js?v=1.0.0"></script>
+</body>
+</html>

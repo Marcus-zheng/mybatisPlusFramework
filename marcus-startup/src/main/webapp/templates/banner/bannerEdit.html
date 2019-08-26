@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>广告新增/编辑管理</title>
+
+    <link href="/static/plugins/bootstrap/validator/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/animate.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/frame/style.css?v=4.1.0" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/fileinput/fileinput.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/fileinput/themes/explorer-fas/theme.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/select/bootstrap-select.min.css" rel="stylesheet">
+    <style>
+        .fixed-table-container{
+            border:none
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="page-header">广告新增/编辑管理</h2>
+    <div class="row">
+        <div class="form-horizontal" id="configData">
+            <form>
+                <input name="id" type="hidden" class="query-cond"/>
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="name">广告名称:</label>
+                    <div class="col-lg-2">
+                        <input id="name" name="name" type="text" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="sort">排序值:</label>
+                    <div class="col-lg-2">
+                        <input id="sort" name="sort" type="number" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="adPlace">广告位:</label>
+                    <div class="col-lg-2">
+                        <select id="adPlace" name="adPlace" class="selectpicker form-control query-cond edit-cond">
+                            <option value="up"><span>上</span></option>
+                            <option value="down"><span>下</span></option>
+                            <option value="left"><span>左</span></option>
+                            <option value="right"><span>右</span></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="startTime">展示开始时间:</label>
+                    <div class="col-lg-2">
+                        <input id="startTime" name="startTime" type="text" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="endTime">展示结束时间:</label>
+                    <div class="col-lg-2">
+                        <input id="endTime" name="endTime" type="text" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="adLink">广告链接:</label>
+                    <div class="col-lg-2">
+                        <input id="adLink" name="adLink" type="text" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm">广告图片:</label>
+                    <div class="col-lg-3" style="width: 19.3%;">
+                        <div class="file-loading">
+                            <input id="mainPicFile" type="file" name="multiFile" multiple>
+                        </div>
+                    </div>
+                    <input id="adPhoto" type="text" name="adPhoto" style="opacity: 0;width: 0;height: 0;" class="query-cond">
+                </div>
+
+                <div class="form-group" style="padding-top:10px">
+                    <label class="col-xs-1 text-right input-sm"  for="remark">备注:</label>
+                    <div class="col-lg-2">
+                        <input id="remark" name="remark" type="text" class="form-control query-cond edit-cond"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top:10px;padding-left: 80px;width: auto;">
+                    <button id="createBanner" class="btn btn-sm btn-primary" type="submit">保存</button>
+                    <button id="back" class="btn btn-sm btn-info" type="button">返回</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<script src="/static/plugins/layer/layer.js"></script>
+<script src="/static/common/param.js"></script>
+<script src="/static/plugins/moment/moment.min.js"></script>
+<script src="/static/plugins/bootstrap/frame/bootstrap.min.js"></script>
+<script src="/static/plugins/bootstrap/validator/bootstrapValidator.min.js"></script>
+<script src="/static/plugins/moment/zh-cn.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script src="/static/plugins/moment/moment.min.js"></script>
+<script src="/static/plugins/bootstrap/fileinput/fileinput.min.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/locales/zh.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/plugins/piexif.min.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/plugins/sortable.min.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/themes/fa/theme.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/fileinput/themes/explorer-fa/theme.js" type="text/javascript"></script>
+<script src="/static/plugins/bootstrap/select/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="/static/common/session.js"></script>
+<script src="/static/banner/bannerEdit.js?v=1.0.0"></script>
+</body>
+</html>

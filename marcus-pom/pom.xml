@@ -36,6 +36,8 @@
         <fastjson.version>1.2.47</fastjson.version>
         <alibaba.druid.version>1.1.10</alibaba.druid.version>
         <druid.spring.boot.starter.version>1.1.10</druid.spring.boot.starter.version>
+        <mybatis.plus.version>3.1.2</mybatis.plus.version>
+        <spring.tx.version>5.1.5.RELEASE</spring.tx.version>
         <!--待选择版本 start-->
         <dubbo.spring.boot.starter.version>2.0.0</dubbo.spring.boot.starter.version>
         <dubbo.version>2.6.5</dubbo.version>
@@ -81,7 +83,7 @@
                 <version>${platform.version}</version>
             </dependency>
             <dependency>
-                <groupId>marcus.redis</groupId>
+                <groupId>com.marcus</groupId>
                 <artifactId>marcus-redis</artifactId>
                 <version>${platform.version}</version>
             </dependency>
@@ -98,6 +100,26 @@
                 <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.tx.version}</version>
             </dependency>
             <!--generated model setter/getter method by annotation-->
             <dependency>

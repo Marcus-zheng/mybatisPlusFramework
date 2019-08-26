@@ -1,0 +1,73 @@
+/**用户表：*/
+CREATE TABLE IF NOT EXISTS auth_user
+(
+	id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	loginName VARCHAR(30) NOT NULL COMMENT '登录账号',
+	loginPwd VARCHAR(128) NOT NULL COMMENT '登录密码',
+	name VARCHAR(30) NULL DEFAULT NULL COMMENT '用户姓名',
+	phone VARCHAR(50) NULL DEFAULT NULL COMMENT '用户手机号码',
+	email VARCHAR(100) NULL DEFAULT NULL COMMENT '用户邮箱',
+	isSuperuser tinyint not null default 0 comment '超级用户标识,0-不是 1-是',
+	initFlag tinyint not null default 0 comment '初始化标识,0-不是 1-是',
+	createTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  updateTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+	operatorId BIGINT(20) NULL DEFAULT NULL COMMENT '操作人id',
+	operatorName VARCHAR(30) NULL DEFAULT NULL COMMENT '操作人账号',
+	opVersion VARCHAR(30) NULL DEFAULT NULL COMMENT '版本号',
+	delStatus tinyint not null default 0 comment '删除标识,0-正常 1-删除',
+	PRIMARY KEY (id)
+)comment '用户表';
+
+/**角色表：*/
+CREATE TABLE IF NOT EXISTS auth_role
+(
+	id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	code VARCHAR(30) NOT NULL COMMENT '角色编号',
+	name VARCHAR(30) NOT NULL COMMENT '角色名称',
+	remark VARCHAR(50) NULL DEFAULT NULL COMMENT '备注',
+	createTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  updateTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+	operatorId BIGINT(20) NULL DEFAULT NULL COMMENT '操作人id',
+	operatorName VARCHAR(30) NULL DEFAULT NULL COMMENT '操作人账号',
+	opVersion VARCHAR(30) NULL DEFAULT NULL COMMENT '版本号',
+	PRIMARY KEY (id)
+) comment '角色表';
+
+/***用户权限表：*/
+CREATE TABLE IF NOT EXISTS auth_permission
+(
+	id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	code VARCHAR(30) NOT NULL UNIQUE COMMENT '权限编码',
+	name VARCHAR(30) NOT NULL COMMENT '权限名称',
+  permission VARCHAR(128) NOT NULL COMMENT '功能权限安全编码',
+  resourceType VARCHAR(30) NOT NULL COMMENT '资源类型',
+  resourceLink VARCHAR(50) NULL DEFAULT NULL COMMENT '资源路径',
+  orderNo INT(3) NOT NULL COMMENT '排序编号',
+  img VARCHAR(100) NULL DEFAULT NULL COMMENT '显示图标',
+  imgHover VARCHAR(128) NULL DEFAULT NULL COMMENT '鼠标移上去变化图标',
+  parentId BIGINT(20) NULL DEFAULT NULL COMMENT '父权限id',
+	createTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  updateTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+	operatorId BIGINT(20) NULL DEFAULT NULL COMMENT '操作人id',
+	operatorName VARCHAR(30) NULL DEFAULT NULL COMMENT '操作人账号',
+	opVersion VARCHAR(30) NULL DEFAULT NULL COMMENT '版本号',
+	PRIMARY KEY (id)
+) comment '用户权限表';
+
+/***用户角色关联表*/
+CREATE TABLE IF NOT EXISTS auth_user_role
+(
+	id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	userId BIGINT(20) NOT NULL COMMENT '用户id',
+	roleId BIGINT(20) NOT NULL COMMENT '角色id',
+	PRIMARY KEY (id)
+) comment '用户角色关联表';
+
+/***角色权限关联表*/
+CREATE TABLE IF NOT EXISTS auth_role_permission
+(
+	id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	roleId BIGINT(20) NOT NULL COMMENT '角色id',
+  permissionId BIGINT(20) NOT NULL COMMENT '权限id',
+	PRIMARY KEY (id)
+) comment '角色权限关联表';

@@ -23,5 +23,5 @@ public class SecuritySubject implements Serializable {
     // 用户姓名
     private String userName;
     // 是否超级管理员
-    private Boolean isSuperuser;
+    private Integer isSuperuser;
 }
