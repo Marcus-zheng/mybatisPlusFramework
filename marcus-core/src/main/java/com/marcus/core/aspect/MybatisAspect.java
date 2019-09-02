@@ -27,9 +27,17 @@ public class MybatisAspect {
     @Autowired(required = false)
     private SecurityService securityService;
 
-    @Pointcut("execution(* com.marcus..dao..save(..))")
-    public void saveOrUpdate() {
-    }
+    @Pointcut("execution(* com.marcus..mapper..insert(..))")
+    public void insertEntity() { }
+
+    @Pointcut("execution(* com.marcus..mapper..update(..))")
+    public void updateEntity() { }
+
+    @Pointcut("execution(* com.marcus..mapper..updateById(..))")
+    public void updateEntityById() { }
+
+    @Pointcut("insertEntity() || updateEntity() || updateEntityById()")
+    public void saveOrUpdate(){ }
 
     @Around("saveOrUpdate() && target(tar) && args(entity)")
     public Object aroundSave(ProceedingJoinPoint point, Object tar, Object entity) throws Throwable {
